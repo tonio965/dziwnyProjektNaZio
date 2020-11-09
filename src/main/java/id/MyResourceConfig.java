@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class MyResourceConfig extends ResourceConfig{
 
   public MyResourceConfig() {
-	  
+	  System.out.println("config test");
   }
   
 
