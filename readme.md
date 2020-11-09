@@ -11,3 +11,5 @@ w folderze **/filesToUseWithDocker** jest **docker-compose.yaml** - jak korzysta
 zrobilem tak ze po kazdym starcie klienta dockera kontener powinien wstac sam lecz jak nie wstanie to docker start nazwa kontenera - a nazwe pobierasz z komendy docker ps -a i tam mas nazwe
 No i jak chcesz sie zalogowac do bazy to zmapowalem port na 3308 bo nie wiem czy macie jakies juz stojace mysqle wiec w workbenchu czy gdziekolwiek tam bedziecie chcieli 
 adres: 127.0.0.1:3308 login roota: user pw roota: password ; adres bazy (jesli potrzebny) /projdb
+
+**SKRYPT DO BAZY** /databaseScripts i w jakims workbenczu czy innym syfie odpalic script1 
