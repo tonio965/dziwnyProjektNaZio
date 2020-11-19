@@ -107,6 +107,11 @@
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
     </dependency>   
+     <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>5.2.12.Final</version>
+    </dependency>
   </dependencies>
   
 
@@ -130,18 +135,7 @@
 				  </layers>
 	          </configuration>
 	        </plugin>
-	          <plugin> 
-	            <groupId>org.jvnet.jaxb2.maven2</groupId>
-	            <artifactId>maven-jaxb2-plugin</artifactId>
-	            <version>0.14.0</version>
-	            <executions>
-	                  <execution>
-	                   <goals>
-	                       <goal>generate</goal>
-	                   </goals>
-	                  </execution>
-	            </executions>
-	        </plugin>
+
 	    </plugins>
 	</build>
 
