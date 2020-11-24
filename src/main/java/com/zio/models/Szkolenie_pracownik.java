@@ -1,17 +1,20 @@
-package DatabaseModels;
+package com.zio.models;
+
+import java.io.Serializable;
 
 import javax.persistence.*;
 
-@Entity
+@Embeddable
 @Table(name = "szkolenie_pracownik")
-public class Szkolenie_pracownik {
+public class Szkolenie_pracownik implements Serializable {
+	
 	
 	int id_pracownik;
 	int id_szkolenie;
 	
 	
 	public Szkolenie_pracownik() {
-		super();
+	
 	}
 	
 	public Szkolenie_pracownik(int id_pracownik, int id_szkolenie) {

@@ -1,18 +1,23 @@
-package DatabaseModels;
+package com.zio.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "kandydat")
 public class Kandydat {
 	
+	@Id
+	@GeneratedValue
 	int id;
 	String imie;
 	String nazwisko;
 	String stanowisko;
 	String nazwa_pliku_CV;
+	
 	public Kandydat(int id, String imie, String nazwisko, String stanowisko, String nazwa_pliku_CV) {
 		super();
 		this.id = id;
@@ -22,7 +27,6 @@ public class Kandydat {
 		this.nazwa_pliku_CV = nazwa_pliku_CV;
 	}
 	public Kandydat() {
-		super();
 	}
 	
 	@Column(name = "id")

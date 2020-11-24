@@ -1,8 +1,9 @@
-package DatabaseModels;
+package com.zio.models;
 
 import javax.persistence.*;
 
-@Entity
+@Embeddable
+@Table(name = "projekt_pracownik")
 public class Projekt_pracownik {
 	
 	int id_pracownik;
@@ -14,10 +15,9 @@ public class Projekt_pracownik {
 		this.id_projekt = id_projekt;
 	}
 	public Projekt_pracownik() {
-		super();
 	}
 	
-	@Column(name="projekt_pracownik")
+	@Column(name="id_pracownik")
 	public int getId_pracownik() {
 		return id_pracownik;
 	}

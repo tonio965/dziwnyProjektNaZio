@@ -1,10 +1,12 @@
-package DatabaseModels;
+package com.zio.models;
 
 import javax.persistence.*;
 
 @Entity
 public class Projekt {
 	
+	@Id
+	@GeneratedValue
 	int id_projekt;
 	String nazwa;
 	int kategoria_projektu;
@@ -15,7 +17,6 @@ public class Projekt {
 		this.kategoria_projektu = kategoria_projektu;
 	}
 	public Projekt() {
-		super();
 	}
 	
 	

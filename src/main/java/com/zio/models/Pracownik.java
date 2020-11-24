@@ -1,4 +1,4 @@
-package DatabaseModels;
+package com.zio.models;
 
 import javax.persistence.*;
 
@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(name = "pracownik")
 public class Pracownik {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	String imie;
 	String nazwisko;
@@ -14,7 +16,7 @@ public class Pracownik {
 	
 	
 	public Pracownik() {
-		super();
+		
 	}
 	
 	public Pracownik(int id, String imie, String nazwisko, int typ_konta, int stanowisko) {

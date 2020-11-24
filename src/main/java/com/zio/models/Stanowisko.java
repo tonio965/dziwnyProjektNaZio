@@ -1,18 +1,18 @@
-package DatabaseModels;
+package com.zio.models;
 
-import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "stanowisko")
 public class Stanowisko {
 	
+	@Id
+	@GeneratedValue
 	int id;
 	String nazwa;
 	String dzial;
 	
 	public Stanowisko() {
-		super();
 	}
 
 	public Stanowisko(int id, String nazwa, String dzial) {

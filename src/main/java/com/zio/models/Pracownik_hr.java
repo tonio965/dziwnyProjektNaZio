@@ -1,4 +1,4 @@
-package DatabaseModels;
+package com.zio.models;
 
 import javax.persistence.*;
 
@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(name = "pracownik_hr")
 public class Pracownik_hr {
 	
+	@Id
+	@GeneratedValue
 	int id_pracownik;
 	String login;
 	String haslo;
@@ -18,7 +20,6 @@ public class Pracownik_hr {
 	}
 	
 	public Pracownik_hr() {
-		super();
 	}
 	
 	@Column(name = "id_pracownik")

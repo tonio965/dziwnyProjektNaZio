@@ -1,15 +1,19 @@
-package DatabaseModels;
+package com.zio.models;
 
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "szkolenie")
 public class Szkolenie {
 	
+	@Id
+	@GeneratedValue
 	int id;
 	String nazwa;
 	Timestamp data_szkolenia;
@@ -18,7 +22,7 @@ public class Szkolenie {
 	
 
 	public Szkolenie() {
-		super();
+
 	}
 
 
