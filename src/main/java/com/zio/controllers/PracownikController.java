@@ -26,7 +26,6 @@ public class PracownikController {
 	PracownikRepository repository;
 	
 
-	
 	@GetMapping
 	public Iterable<Pracownik> getPracowniks() {
 	    return repository.findAll();
