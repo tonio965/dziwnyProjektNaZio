@@ -8,5 +8,7 @@ import com.zio.models.*;
 public interface KandydatRepository extends JpaRepository<Kandydat, Integer>{
 	
 	List<Kandydat> findByNazwisko(String surname);
+	
+	List<Kandydat> findByStanowisko(Integer stanowisko);
 
 }

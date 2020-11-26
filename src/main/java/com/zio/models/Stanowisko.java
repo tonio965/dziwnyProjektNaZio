@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Stanowisko {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	String nazwa;
 	String dzial;

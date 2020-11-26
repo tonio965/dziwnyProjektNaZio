@@ -16,10 +16,10 @@ public class Kandydat {
 	int id;
 	String imie;
 	String nazwisko;
-	String stanowisko;
+	int stanowisko;
 	String nazwa_pliku_CV;
 	
-	public Kandydat(int id, String imie, String nazwisko, String stanowisko, String nazwa_pliku_CV) {
+	public Kandydat(int id, String imie, String nazwisko, int stanowisko, String nazwa_pliku_CV) {
 		super();
 		this.id = id;
 		this.imie = imie;
@@ -55,10 +55,10 @@ public class Kandydat {
 	}
 	
 	@Column(name = "stanowisko")
-	public String getStanowisko() {
+	public int getStanowisko() {
 		return stanowisko;
 	}
-	public void setStanowisko(String stanowisko) {
+	public void setStanowisko(int stanowisko) {
 		this.stanowisko = stanowisko;
 	}
 	

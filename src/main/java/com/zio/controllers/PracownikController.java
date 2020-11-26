@@ -1,5 +1,6 @@
 package com.zio.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,12 @@ public class PracownikController {
 		p.setStanowisko(pracownik.getStanowisko());
 		p.setTyp_konta(pracownik.getTyp_konta());
 		repository.save(p);
+	}
+	
+	
+	@GetMapping(value="/stanowisko/{id}")
+	public List<Pracownik> findByStanowisko(@PathVariable Integer id){
+		return repository.findByStanowisko(id);
 	}
 
 }

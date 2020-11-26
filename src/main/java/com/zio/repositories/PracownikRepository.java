@@ -14,6 +14,9 @@ import com.zio.models.Pracownik;
 public interface PracownikRepository extends JpaRepository<Pracownik, Integer>{
 	
 	List<Pracownik> findByNazwisko(String surname);
+	
+	List<Pracownik> findByStanowisko(Integer stanowisko);
+	
 
 
 

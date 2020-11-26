@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zio.exceptions.ItemNotFoundException;
 import com.zio.models.Kandydat;
+import com.zio.models.Pracownik;
 import com.zio.repositories.KandydatRepository;
 
 @RestController
@@ -46,6 +47,11 @@ public class KandydatController {
 	@GetMapping(value= "/nazwisko/{nazwisko}")
 	public List<Kandydat> findByNazwisko(@PathVariable String nazwisko) {
 		return repository.findByNazwisko(nazwisko);
+	}
+	
+	@GetMapping(value="/stanowisko/{id}")
+	public List<Kandydat> findByStanowisko(@PathVariable Integer id){
+		return repository.findByStanowisko(id);
 	}
 	
 	@PutMapping(value="/{id}")
