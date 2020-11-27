@@ -1,0 +1,418 @@
+{
+	"info": {
+		"_postman_id": "b1df7942-0b6c-40e7-b583-ba163943ebb7",
+		"name": "zio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pracownik",
+			"item": [
+				{
+					"name": "getPracownik",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPracownikById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPracownik",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"imie\": \"tomasz\",\r\n    \"nazwisko\": \"koltun\",\r\n    \"typ_konta\": 1,\r\n    \"stanowisko\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePracownik",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/pracownicy/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"pracownicy",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editPracownik",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"imie\": \"testEdycji\",\r\n    \"nazwisko\": \"edytowany\",\r\n    \"typ_konta\": 1,\r\n    \"stanowisko\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/pracownicy/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"pracownicy",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "kandydat",
+			"item": [
+				{
+					"name": "addKandydat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"imie\": \"testowykandydat23\",\r\n        \"nazwisko\": \"testtest\",\r\n        \"stanowisko\": \"1\",\r\n        \"nazwa_pliku_CV\": \"random\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/kandydaci",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"kandydaci"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getKandydaci",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getKandydat",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getKandydatSurname",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteKandydat",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/kandydaci/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"kandydaci",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putKandydat",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/kandydaci/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"kandydaci",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "stanowisko",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByDzial",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStanowisko",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addStanowisko",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/stanowisko",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"stanowisko"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteStanowisko",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/stanowisko/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"stanowisko",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "szkolenie",
+			"item": [
+				{
+					"name": "addSzkolenie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nazwa\": \"kolejne\",\r\n        \"data_szkolenia\": \"2008-01-01T00:00:01.000+00:00\",\r\n        \"rodzaj_szkolenia\": 1\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/szkolenia",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"szkolenia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSzkolenie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSzkolenia",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/szkolenia/",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"szkolenia",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editSzkolenie",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeSzkolenie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/szkolenia/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"szkolenia",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findSzkolenieByNazwa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findSzkolenieByRodzaj",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
