@@ -7,8 +7,14 @@ tu bede wypisywac rozne rzeczy zwiazane z projektem takie jak ustawic dockera cz
 # Stworzenie instancji db
 **Pobierz** dockera
 **Pobierz** aktualizacje to **WDL2**
+
+**NIEAKTUALNE ODPALANIE W TEN SPOSOB**
 w folderze **/filesToUseWithDocker** jest **docker-compose.yaml** - jak korzystasz z linuxa to git jak nie to pewnie w powershellu tez zadziala: **docker-compose up -d** to stworzy obraz bazy i Ci go odpali
 zrobilem tak ze po kazdym starcie klienta dockera kontener powinien wstac sam lecz jak nie wstanie to docker start nazwa kontenera - a nazwe pobierasz z komendy docker ps -a i tam mas nazwe
+
+**AKTUALNE ODPALANIE**
+- jak  pierwszy raz zaciagasz wszystko to ./fromZeroScript.sh  <- moze byc potrzebne chmod 777
+- jak zaciagasz tylko zmiany w backendzie to ./updatedSpringImage.sh
 No i jak chcesz sie zalogowac do bazy to zmapowalem port na 3308 bo nie wiem czy macie jakies juz stojace mysqle wiec w workbenchu czy gdziekolwiek tam bedziecie chcieli 
 adres: 127.0.0.1:3308 login roota: user pw roota: password ; adres bazy (jesli potrzebny) /projdb
 
