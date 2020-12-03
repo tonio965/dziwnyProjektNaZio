@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zio.exceptions.ItemNotFoundException;
+import com.zio.models.Pracownik;
 import com.zio.models.Szkolenie;
+import com.zio.repositories.PracownikRepository;
 import com.zio.repositories.SzkolenieRepository;
 
 @RestController
@@ -21,6 +23,10 @@ public class SzkolenieController {
 	
 	@Autowired
 	SzkolenieRepository repository;
+	
+	@Autowired
+	PracownikRepository pracownikRepository;
+	
 	
 	@GetMapping
 	public Iterable<Szkolenie> getSzkolenies() {

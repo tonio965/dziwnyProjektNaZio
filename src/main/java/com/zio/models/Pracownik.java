@@ -18,6 +18,8 @@ public class Pracownik {
 	int stanowisko;
 	
 	@ManyToMany
+	(cascade = { CascadeType.PERSIST,
+			     CascadeType.MERGE})
 	@JoinTable(
 			name               = "szkolenie_pracownik",
 			joinColumns        = @JoinColumn(name = "id_pracownik"),
@@ -33,6 +35,17 @@ public class Pracownik {
 
 	public void setSzkolenia(List<Szkolenie> szkolenia) {
 		this.szkolenia = szkolenia;
+	}
+	
+	public void addSzkolenie(Szkolenie szkolenie) {
+		szkolenia.add(szkolenie);
+	}
+	
+	public void removeSzkolenie(int id) {
+		for(Szkolenie s : szkolenia) {
+			if(s.getId()==id)
+				szkolenia.remove(s);
+		}
 	}
 
 	public Pracownik() {

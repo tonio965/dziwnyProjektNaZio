@@ -13,7 +13,8 @@ CREATE TABLE stanowisko (
  	id INT(8) AUTO_INCREMENT PRIMARY KEY,
  	nazwa VARCHAR(30) NOT NULL,
  	data_szkolenia TIMESTAMP NOT NULL,
- 	rodzaj_szkolenia INT(8) NOT NULL
+ 	rodzaj_szkolenia INT(8) NOT NULL,
+	FOREIGN KEY (rodzaj_szkolenia) REFERENCES szkolenie_kat(id_szk_kat)
  );
 
  CREATE TABLE pracownik (

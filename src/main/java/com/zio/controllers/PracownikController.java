@@ -1,5 +1,6 @@
 package com.zio.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,7 @@ public class PracownikController {
 	@Autowired
 	SzkolenieRepository szkolenieRepository;
 	
+	
 
 	@GetMapping
 	public Iterable<Pracownik> getPracowniks() {
@@ -42,22 +44,56 @@ public class PracownikController {
 	    return repository.findById(id).orElseThrow(ItemNotFoundException::new);
 	}
 	
-//	@PostMapping(value="/addSzkolenie/{szkolenie_id}/{pracownik_id}")
-//	public Pracownik addSzkolenieToPracownik(@PathVariable int pracownik_id, @PathVariable int szkolenie) {
-//		Pracownik p = repository.findById(pracownik_id).orElseThrow(() -> new ItemNotFoundException());
-//		Optional<Szkolenie> s = szkolenieRepository.findById(szkolenie);
-//		Szkolenie ss = s.get();
-//		p.getSzkolenia().add(ss);
-//		repository.save(p);
-//		return p;
-//		
-//		
-//	}
+	@PutMapping(value="/addSzkolenie/{pracownik_id}/{szkolenie_id}")
+	public void editPracownik(@PathVariable int pracownik_id, @PathVariable int szkolenie_id) {
+		Pracownik p = repository.findById(pracownik_id).orElseThrow(() -> new ItemNotFoundException());
+		Optional<Szkolenie> s = szkolenieRepository.findById(szkolenie_id);
+		Szkolenie ss = s.get();
+		p.getSzkolenia().add(ss);
+		repository.save(p);
+
+		
+		
+	}
+	
+	@PutMapping(value="/removeSzkolenie/{pracownik_id}/{szkolenie_id}")
+	public void removeSzkolenie(@PathVariable int pracownik_id, @PathVariable int szkolenie_id) {
+		Pracownik p = repository.findById(pracownik_id).orElseThrow(() -> new ItemNotFoundException());
+		int index=-1;
+		List<Szkolenie> szkolenia = p.getSzkolenia();
+		for(int x = 0 ; x<szkolenia.size(); x++) {
+			if(szkolenia.get(x).getId()==szkolenie_id) {
+				index=x;
+			}
+		}
+		if(index!=-1) {
+			p.getSzkolenia().remove(index);
+		}
+		repository.save(p);
+
+		
+		
+	}
+	
+	List<Pracownik> findBySzkolenia(int szkolenie){
+		List<Pracownik> pracownics = new ArrayList<>();
+		List<Pracownik> all = repository.findAll();
+		
+		for(Pracownik p : all) {
+			for(Szkolenie s : p.getSzkolenia()) {
+				if(s.getId()==szkolenie) {
+					pracownics.add(p);
+					break;
+				}
+			}
+		}
+		return pracownics;
+	}
 	
 	@PostMapping
 	public Pracownik addPracownik(@RequestBody Pracownik pracownik) {
-		Szkolenie s = szkolenieRepository.findById(1).get();
-		pracownik.getSzkolenia().add(s);
+//		Szkolenie s = szkolenieRepository.findById(1).get();
+//		pracownik.getSzkolenia().add(s);
 	    return repository.save(pracownik);
 	}
 	

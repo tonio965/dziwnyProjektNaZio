@@ -3,6 +3,7 @@ package com.zio.models;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,10 @@ public class Szkolenie {
 	int rodzaj_szkolenia;
 	
 	
-	@ManyToMany (mappedBy = "szkolenia")
+	@ManyToMany (mappedBy = "szkolenia",
+				 cascade = {
+			             CascadeType.PERSIST,
+			             CascadeType.MERGE})
 	List<Pracownik> pracownicy;
 	
 	

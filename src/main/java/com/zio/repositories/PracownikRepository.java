@@ -18,7 +18,8 @@ public interface PracownikRepository extends JpaRepository<Pracownik, Integer>{
 	
 	List<Pracownik> findByStanowisko(Integer stanowisko);
 	
-//	void addSzkoleniaToPracownik(int pracownik_id, int szkolenie);
+	List<Pracownik> findBySzkolenia(int szkolenie);
+	
 	
 
 
