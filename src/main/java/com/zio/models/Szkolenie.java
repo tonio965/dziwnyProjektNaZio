@@ -1,12 +1,14 @@
 package com.zio.models;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +21,10 @@ public class Szkolenie {
 	String nazwa;
 	Timestamp data_szkolenia;
 	int rodzaj_szkolenia;
+	
+	
+	@ManyToMany (mappedBy = "szkolenia")
+	List<Pracownik> pracownicy;
 	
 	
 

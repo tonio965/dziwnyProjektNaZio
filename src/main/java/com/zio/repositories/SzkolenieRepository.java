@@ -10,6 +10,7 @@ public interface SzkolenieRepository extends JpaRepository<Szkolenie, Integer>{
 	
 	List<Szkolenie> findByNazwa(String name);
 	
+	
 //	List<Szkolenie> findByRodzaj_szkolenia(Integer type);
 
 }

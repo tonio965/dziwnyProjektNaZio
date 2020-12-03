@@ -1,5 +1,8 @@
 package com.zio.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +17,24 @@ public class Pracownik {
 	int typ_konta;
 	int stanowisko;
 	
+	@ManyToMany
+	@JoinTable(
+			name               = "szkolenie_pracownik",
+			joinColumns        = @JoinColumn(name = "id_pracownik"),
+			inverseJoinColumns = @JoinColumn(name = "id_szkolenie"))
+	List<Szkolenie> szkolenia;
 	
+	
+	
+	
+	public List<Szkolenie> getSzkolenia() {
+		return szkolenia;
+	}
+
+	public void setSzkolenia(List<Szkolenie> szkolenia) {
+		this.szkolenia = szkolenia;
+	}
+
 	public Pracownik() {
 		
 	}
@@ -26,7 +46,8 @@ public class Pracownik {
 		this.nazwisko = nazwisko;
 		this.typ_konta = typ_konta;
 		this.stanowisko = stanowisko;
-	}
+		this.szkolenia = new ArrayList<>();
+		}
 	
 	@Column(name = "id")
 	public int getId() {

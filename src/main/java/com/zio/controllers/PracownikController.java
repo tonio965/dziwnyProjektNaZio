@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zio.exceptions.ItemNotFoundException;
 import com.zio.models.Pracownik;
+import com.zio.models.Szkolenie;
 import com.zio.repositories.PracownikRepository;
+import com.zio.repositories.SzkolenieRepository;
 
 
 @RestController
@@ -25,6 +27,9 @@ public class PracownikController {
 	
 	@Autowired
 	PracownikRepository repository;
+	
+	@Autowired
+	SzkolenieRepository szkolenieRepository;
 	
 
 	@GetMapping
@@ -37,8 +42,22 @@ public class PracownikController {
 	    return repository.findById(id).orElseThrow(ItemNotFoundException::new);
 	}
 	
+//	@PostMapping(value="/addSzkolenie/{szkolenie_id}/{pracownik_id}")
+//	public Pracownik addSzkolenieToPracownik(@PathVariable int pracownik_id, @PathVariable int szkolenie) {
+//		Pracownik p = repository.findById(pracownik_id).orElseThrow(() -> new ItemNotFoundException());
+//		Optional<Szkolenie> s = szkolenieRepository.findById(szkolenie);
+//		Szkolenie ss = s.get();
+//		p.getSzkolenia().add(ss);
+//		repository.save(p);
+//		return p;
+//		
+//		
+//	}
+	
 	@PostMapping
 	public Pracownik addPracownik(@RequestBody Pracownik pracownik) {
+		Szkolenie s = szkolenieRepository.findById(1).get();
+		pracownik.getSzkolenia().add(s);
 	    return repository.save(pracownik);
 	}
 	
