@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,6 +52,22 @@ public class SzkolenieController {
 	@GetMapping(value = "/nazwa/{nazwa}")
 	public List<Szkolenie> findByNazwa(@PathVariable String nazwa){
 		return repository.findByNazwa(nazwa);
+	}
+	
+	@PutMapping
+	public Szkolenie editSzkolenie(@RequestBody Szkolenie szkolenie) {
+		
+		Szkolenie s = repository.findById(szkolenie.getId()).orElseThrow(() -> new ItemNotFoundException());
+		if(szkolenie.getData_szkolenia()!=null)
+			s.setData_szkolenia(szkolenie.getData_szkolenia());
+		if(szkolenie.getNazwa()!=null)
+			s.setNazwa(szkolenie.getNazwa());
+		if(szkolenie.getRodzaj_szkolenia()!=null)
+			s.setRodzaj_szkolenia(szkolenie.getRodzaj_szkolenia());
+		s=szkolenie;
+		repository.save(s);
+		
+		return s;
 	}
 	
 //	@GetMapping(value = "/rodzaj/{rodzaj}")

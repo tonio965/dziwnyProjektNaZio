@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,8 +22,10 @@ public class Szkolenie {
 	int id;
 	String nazwa;
 	Timestamp data_szkolenia;
-	int rodzaj_szkolenia;
 	
+	
+	@OneToOne
+	SzkolenieKat rodzaj_szkolenia;
 	
 	@ManyToMany (mappedBy = "szkolenia",
 				 cascade = {
@@ -37,7 +40,7 @@ public class Szkolenie {
 	}
 
 
-	public Szkolenie(int id, String nazwa, Timestamp data_szkolenia, int rodzaj_szkolenia) {
+	public Szkolenie(int id, String nazwa, Timestamp data_szkolenia, SzkolenieKat rodzaj_szkolenia) {
 		super();
 		this.id = id;
 		this.nazwa = nazwa;
@@ -75,13 +78,12 @@ public class Szkolenie {
 		this.data_szkolenia = data_szkolenia;
 	}
 
-	@Column(name = "rodzaj_szkolenia" )
-	public int getRodzaj_szkolenia() {
+	public SzkolenieKat getRodzaj_szkolenia() {
 		return rodzaj_szkolenia;
 	}
 
 
-	public void setRodzaj_szkolenia(int rodzaj_szkolenia) {
+	public void setRodzaj_szkolenia(SzkolenieKat rodzaj_szkolenia) {
 		this.rodzaj_szkolenia = rodzaj_szkolenia;
 	}
 	
