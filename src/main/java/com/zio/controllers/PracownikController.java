@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zio.exceptions.ItemNotFoundException;
+import com.zio.models.Kandydat;
 import com.zio.models.Pracownik;
+import com.zio.models.Stanowisko;
 import com.zio.models.Szkolenie;
 import com.zio.repositories.PracownikRepository;
+import com.zio.repositories.StanowiskoRepository;
 import com.zio.repositories.SzkolenieRepository;
 
 
@@ -31,6 +35,9 @@ public class PracownikController {
 	
 	@Autowired
 	SzkolenieRepository szkolenieRepository;
+	
+	@Autowired
+	StanowiskoRepository stanowiskoRepository;
 	
 	
 
@@ -47,13 +54,35 @@ public class PracownikController {
 	@PutMapping(value="/addSzkolenie/{pracownik_id}/{szkolenie_id}")
 	public void editPracownik(@PathVariable int pracownik_id, @PathVariable int szkolenie_id) {
 		Pracownik p = repository.findById(pracownik_id).orElseThrow(() -> new ItemNotFoundException());
-		Optional<Szkolenie> s = szkolenieRepository.findById(szkolenie_id);
-		Szkolenie ss = s.get();
-		p.getSzkolenia().add(ss);
+		Szkolenie s = szkolenieRepository.findById(szkolenie_id).get();
+		p.getSzkolenia().add(s);
 		repository.save(p);
-
 		
+	}
+	
+	@PutMapping
+	public void editAnything(@RequestBody Pracownik pracownik) {
+		Pracownik p = repository.findById(pracownik.getId()).orElseThrow(() -> new ItemNotFoundException());
+		if(pracownik.getImie()!=null)
+			p.setImie(pracownik.getImie());
+		if(pracownik.getNazwisko()!=null)
+			p.setNazwisko(pracownik.getNazwisko());
+		if(pracownik.getStanowisko()!=null)
+			p.setStanowisko(pracownik.getStanowisko());
+		if(pracownik.getTyp_konta()!=0) {
+			p.setTyp_konta(pracownik.getTyp_konta());
+		}
 		
+		repository.save(p);
+	}
+	
+	@Transactional
+	@PutMapping(value= "/addStanowisko/{id}/{pracownikId}")
+	public void addStanowiskoToPracownik(@PathVariable Integer id,@PathVariable Integer pracownikId) {
+		Stanowisko s = stanowiskoRepository.findById(id).get();
+		Pracownik k = repository.findById(pracownikId).get();
+		k.setStanowisko(s);
+		repository.save(k);
 	}
 	
 	@PutMapping(value="/removeSzkolenie/{pracownik_id}/{szkolenie_id}")

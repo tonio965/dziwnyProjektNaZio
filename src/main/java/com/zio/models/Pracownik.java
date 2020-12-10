@@ -15,7 +15,9 @@ public class Pracownik {
 	String imie;
 	String nazwisko;
 	int typ_konta;
-	int stanowisko;
+	
+	@OneToOne
+	private Stanowisko stanowisko;
 	
 	@ManyToMany
 	(cascade = { CascadeType.PERSIST,
@@ -63,7 +65,7 @@ public class Pracownik {
 		
 	}
 	
-	public Pracownik(int id, String imie, String nazwisko, int typ_konta, int stanowisko) {
+	public Pracownik(int id, String imie, String nazwisko, int typ_konta, Stanowisko stanowisko) {
 		super();
 		this.id = id;
 		this.imie = imie;
@@ -105,11 +107,10 @@ public class Pracownik {
 		this.typ_konta = typ_konta;
 	}
 	
-	@Column(name = "stanowisko")
-	public int getStanowisko() {
+	public Stanowisko getStanowisko() {
 		return stanowisko;
 	}
-	public void setStanowisko(int stanowisko) {
+	public void setStanowisko(Stanowisko stanowisko) {
 		this.stanowisko = stanowisko;
 	}
 	
