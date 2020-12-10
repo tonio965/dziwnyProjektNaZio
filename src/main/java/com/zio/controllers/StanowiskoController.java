@@ -67,16 +67,16 @@ public class StanowiskoController {
 		List<Pracownik> pracowniks= pracownikRepository.findByStanowisko(id);
 		List<Kandydat> kandydats= kandydatRepository.findByStanowisko(id);
 		
-		for(Pracownik p : pracowniks) {
-			p.setStanowisko(1000);
-			pracownikController.editPracownik(p.getId(), p);
-			
-		}
-		
-		for(Kandydat k : kandydats) {
-			k.setStanowisko(1000);
-			kandydatController.editKandydat(k.getId(), k);
-		}
+//		for(Pracownik p : pracowniks) {
+//			p.setStanowisko(1000);
+//			pracownikController.editPracownik(p.getId(), p);
+//			
+//		}
+//		
+//		for(Kandydat k : kandydats) {
+//			k.setStanowisko(null);
+//			kandydatController.editKandydat(k.getId(), k);
+//		}
 		
 	    repository.deleteById(id);
 	}

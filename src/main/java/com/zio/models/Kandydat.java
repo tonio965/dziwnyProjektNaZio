@@ -1,10 +1,13 @@
 package com.zio.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,15 +19,17 @@ public class Kandydat {
 	int id;
 	String imie;
 	String nazwisko;
-	int stanowisko;
 	String nazwa_pliku_CV;
 	
-	public Kandydat(int id, String imie, String nazwisko, int stanowisko, String nazwa_pliku_CV) {
+	@OneToOne
+	private Stanowisko stanowisko;
+	
+	
+	public Kandydat(int id, String imie, String nazwisko, String nazwa_pliku_CV) {
 		super();
 		this.id = id;
 		this.imie = imie;
 		this.nazwisko = nazwisko;
-		this.stanowisko = stanowisko;
 		this.nazwa_pliku_CV = nazwa_pliku_CV;
 	}
 	public Kandydat() {
@@ -54,14 +59,13 @@ public class Kandydat {
 		this.nazwisko = nazwisko;
 	}
 	
-	@Column(name = "stanowisko")
-	public int getStanowisko() {
+	
+	public Stanowisko getStanowisko() {
 		return stanowisko;
 	}
-	public void setStanowisko(int stanowisko) {
+	public void setStanowisko(Stanowisko stanowisko) {
 		this.stanowisko = stanowisko;
 	}
-	
 	@Column(name = "nazwa_pliku_CV")
 	public String getNazwa_pliku_CV() {
 		return nazwa_pliku_CV;
