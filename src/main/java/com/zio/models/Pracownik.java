@@ -26,6 +26,17 @@ public class Pracownik {
 			inverseJoinColumns = @JoinColumn(name = "id_szkolenie"))
 	List<Szkolenie> szkolenia;
 	
+	@ManyToMany 
+			(mappedBy = "pracownicy",
+			 cascade = {
+		             CascadeType.PERSIST,
+		             CascadeType.MERGE})
+	List<Projekt> projekty;
+	
+	
+	
+	
+	
 	
 	
 	

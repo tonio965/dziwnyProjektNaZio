@@ -1,4 +1,4 @@
-package com.zio.models;
+ package com.zio.models;
 
 import javax.persistence.*;
 
