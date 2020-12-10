@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.zio.models.Szkolenie;
-import com.zio.models.Szkolenie_kat;
+import com.zio.models.SzkolenieKat;
 
-public interface Szkolenie_katRepository extends JpaRepository<Szkolenie_kat, Integer>{
+public interface Szkolenie_katRepository extends JpaRepository<SzkolenieKat, Integer>{
 	
-	Szkolenie_kat findByIdSzkKat(int id_szk_kat);
+	SzkolenieKat findByIdSzkKat(int id_szk_kat);
 	void deleteByIdSzkKat(int id_szk_kat);
 
 }

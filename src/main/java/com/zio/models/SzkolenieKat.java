@@ -9,20 +9,20 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "szkolenie_kat")
-public class Szkolenie_kat {
+public class SzkolenieKat {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int idSzkKat;
-	String nazwaSzkKat;
+	String nazwaKatSzk;
 	
-	public Szkolenie_kat() {
+	public SzkolenieKat() {
 	
 	}
 
-	public Szkolenie_kat(int id_szk_kat, String nazwa_kat_szk) {
+	public SzkolenieKat(int id_szk_kat, String nazwa_kat_szk) {
 		this.idSzkKat = id_szk_kat;
-		this.nazwaSzkKat = nazwa_kat_szk;
+		this.nazwaKatSzk = nazwa_kat_szk;
 	}
 
 	@Column(name = "id_szk_kat")
@@ -37,11 +37,11 @@ public class Szkolenie_kat {
 	
 	@Column(name = "nazwa_kat_szk")
 	public String getnazwaSzkKat() {
-		return nazwaSzkKat;
+		return nazwaKatSzk;
 	}
 
 	public void setnazwaSzkKat(String nazwa_kat_szk) {
-		this.nazwaSzkKat = nazwa_kat_szk;
+		this.nazwaKatSzk = nazwa_kat_szk;
 	}
 	
 	
