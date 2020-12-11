@@ -1,5 +1,6 @@
 package com.zio.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zio.exceptions.ItemNotFoundException;
 import com.zio.models.Pracownik;
 import com.zio.models.Szkolenie;
+import com.zio.models.SzkolenieKat;
 import com.zio.repositories.PracownikRepository;
 import com.zio.repositories.SzkolenieRepository;
+import com.zio.repositories.Szkolenie_katRepository;
 
 @RestController
 @RequestMapping(value = "/szkolenia")
@@ -27,6 +30,9 @@ public class SzkolenieController {
 	
 	@Autowired
 	PracownikRepository pracownikRepository;
+	
+	@Autowired
+	Szkolenie_katRepository szkolenieKatRepository;
 	
 	
 	@GetMapping
@@ -54,6 +60,15 @@ public class SzkolenieController {
 		return repository.findByNazwa(nazwa);
 	}
 	
+	@PutMapping(value = "/addRodzaj/{szkolenieId}/{rodzajId}")
+	public void addRodzajSzkolenia(@PathVariable Integer rodzajId, @PathVariable Integer szkolenieId) {
+		SzkolenieKat sk = szkolenieKatRepository.findByIdSzkKat(rodzajId);
+		Szkolenie s = repository.findById(szkolenieId).get();
+		s.setRodzaj_szkolenia(sk);
+		repository.save(s);
+		
+	}
+	
 	@PutMapping
 	public Szkolenie editSzkolenie(@RequestBody Szkolenie szkolenie) {
 		
@@ -64,16 +79,25 @@ public class SzkolenieController {
 			s.setNazwa(szkolenie.getNazwa());
 		if(szkolenie.getRodzaj_szkolenia()!=null)
 			s.setRodzaj_szkolenia(szkolenie.getRodzaj_szkolenia());
-		s=szkolenie;
 		repository.save(s);
 		
 		return s;
 	}
 	
-//	@GetMapping(value = "/rodzaj/{rodzaj}")
-//	public List<Szkolenie> findByRodzaj_szkolenia(@PathVariable Integer rodzaj){
-//		return repository.findByRodzaj_szkolenia(rodzaj);
-//	}
+	@GetMapping(value = "/rodzaj/{rodzaj}")
+	public List<Szkolenie> findByRodzajSzkolenia(@PathVariable Integer rodzaj){
+		List<Szkolenie> allSzkolenia = repository.findAll();
+		List<Szkolenie> filteredSzkolenia = new ArrayList<>();
+		for(Szkolenie s : allSzkolenia) {
+			if(s.getRodzaj_szkolenia()!=null) {
+				if(s.getRodzaj_szkolenia().getIdSzkKat()==rodzaj) {
+					filteredSzkolenia.add(s);
+				}
+			}
+
+		}
+		return filteredSzkolenia;
+	}
 	
 
 }
