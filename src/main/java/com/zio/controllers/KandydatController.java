@@ -59,6 +59,24 @@ public class KandydatController {
 		repository.save(k);
 	}
 	
+	@Transactional
+	@PutMapping(value= "/changeStanowisko/{id}/{pracownikId}")
+	public void changeStanowiskoToKandydat(@PathVariable Integer id,@PathVariable Integer pracownikId) {
+		Stanowisko s = stanowiskoRepository.findById(id).get();
+		Kandydat k = repository.findById(pracownikId).get();
+		k.setStanowisko(s);
+		repository.save(k);
+	}
+	
+	@Transactional
+	@PutMapping(value= "/removeStanowisko/{id}/{pracownikId}")
+	public void removeStanowiskoToKandydat(@PathVariable Integer id,@PathVariable Integer pracownikId) {
+//		Stanowisko s = stanowiskoRepository.findById(id).get();
+		Kandydat k = repository.findById(pracownikId).get();
+		k.setStanowisko(null);
+		repository.save(k);
+	}
+	
 	@GetMapping(value= "/nazwisko/{nazwisko}")
 	public List<Kandydat> findByNazwisko(@PathVariable String nazwisko) {
 		return repository.findByNazwisko(nazwisko);
@@ -74,10 +92,15 @@ public class KandydatController {
 		
 		Kandydat p = repository.findById(id).orElseThrow(() -> new ItemNotFoundException());
 
-		p.setImie(kandydat.getImie());
-		p.setNazwisko(kandydat.getNazwisko());
+		if(kandydat.getImie()!=null)
+			p.setImie(kandydat.getImie());
+		if(p.getNazwisko()!=null)
+			p.setNazwisko(kandydat.getNazwisko());
+		
 		p.setStanowisko(kandydat.getStanowisko());
-		p.setNazwa_pliku_CV(kandydat.getNazwa_pliku_CV());
+		
+		if(p.getNazwa_pliku_CV()!=null)
+			p.setNazwa_pliku_CV(kandydat.getNazwa_pliku_CV());
 		repository.save(p);
 	}
 

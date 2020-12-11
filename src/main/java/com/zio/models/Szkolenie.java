@@ -27,6 +27,7 @@ public class Szkolenie {
 	@OneToOne
 	SzkolenieKat rodzaj_szkolenia;
 	
+
 	@ManyToMany (mappedBy = "szkolenia",
 				 cascade = {
 			             CascadeType.PERSIST,

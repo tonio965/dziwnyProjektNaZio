@@ -99,12 +99,29 @@ public class PracownikController {
 			p.getSzkolenia().remove(index);
 		}
 		repository.save(p);
-
-		
 		
 	}
 	
-	List<Pracownik> findBySzkolenia(int szkolenie){
+	@Transactional
+	@PutMapping(value= "/changeStanowisko/{id}/{pracownikId}")
+	public void changeStanowiskoToPracownik(@PathVariable Integer id,@PathVariable Integer pracownikId) {
+		Stanowisko s = stanowiskoRepository.findById(id).get();
+		Pracownik k = repository.findById(pracownikId).get();
+		k.setStanowisko(s);
+		repository.save(k);
+	}
+	
+	@Transactional
+	@PutMapping(value= "/removeStanowisko/{pracownikId}")
+	public void removeStanowiskoToPracownik(@PathVariable Integer pracownikId) {
+//		Stanowisko s = stanowiskoRepository.findById(id).get();
+		Pracownik k = repository.findById(pracownikId).get();
+		k.setStanowisko(null);
+		repository.save(k);
+	}
+	
+	@GetMapping(value="/getBySzkolenie/{szkolenie}")
+	List<Pracownik> findBySzkolenia(@PathVariable int szkolenie){
 		List<Pracownik> pracownics = new ArrayList<>();
 		List<Pracownik> all = repository.findAll();
 		
@@ -146,7 +163,15 @@ public class PracownikController {
 	
 	@GetMapping(value="/stanowisko/{id}")
 	public List<Pracownik> findByStanowisko(@PathVariable Integer id){
-		return repository.findByStanowisko(id);
+		List<Pracownik> pracowniks = repository.findAll();
+		List<Pracownik> filtered = new ArrayList<>();
+		for(Pracownik p : pracowniks) {
+			if(p.getStanowisko()!=null) {
+				if(p.getStanowisko().getId()==id)
+					filtered.add(p);
+			}
+		}
+		return filtered;
 	}
 
 }
