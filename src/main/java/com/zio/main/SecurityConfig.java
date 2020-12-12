@@ -16,6 +16,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.stereotype.Component;
@@ -23,12 +26,10 @@ import org.springframework.stereotype.Component;
 import com.zio.repositories.PracownikHrRepository;
 
 
-//@Component
-//@Configuration
-//@EnableAuthorizationServer
+
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-public class MyResourceConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 
 	@Autowired
@@ -43,15 +44,26 @@ public class MyResourceConfig extends WebSecurityConfigurerAdapter{
 		.and().authorizeRequests().antMatchers("/oauth/token")
 		.permitAll().anyRequest().authenticated();
 		
+		
 	}
 	
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 		provider.setUserDetailsService(userDetailsService);
+		provider.setPasswordEncoder(BCryptPasswordEncoder());
 		return provider;
 	}
 	
+	@Bean
+	public BCryptPasswordEncoder BCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+//	@Bean
+//	public PasswordEncoder passwordEncoder() {
+//		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//	}
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception{

@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication(scanBasePackages={"com.zio.*"})
-@EnableJpaRepositories(basePackages = "com.zio.repositories")
-@EntityScan(basePackages = "com.zio.models")
+@EnableJpaRepositories(basePackages = {"com.zio.repositories", "com.zio.main"})
+@EntityScan(basePackages = {"com.zio.*", "com.zio.main"})
 public class Main {
 
 	public static void main(String[] args) {
