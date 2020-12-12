@@ -12,7 +12,8 @@ public class Projekt {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int idProjekt;
 	String nazwa;
-	int kategoriaProjektu;
+	@OneToOne
+	KatProjektu kategoriaProjektu;
 	
 	@ManyToMany
 	(cascade = { CascadeType.PERSIST,
@@ -47,7 +48,7 @@ public class Projekt {
 	
 	
 	
-	public Projekt(int id_projekt, String nazwa, int kategoria_projektu) {
+	public Projekt(int id_projekt, String nazwa, KatProjektu kategoria_projektu) {
 		super();
 		this.idProjekt = id_projekt;
 		this.nazwa = nazwa;
@@ -65,9 +66,7 @@ public class Projekt {
 	public void setNazwa(String nazwa) {
 		this.nazwa = nazwa;
 	}
-	public void setKategoria_projektu(int kategoria_projektu) {
-		this.kategoriaProjektu = kategoria_projektu;
-	}
+
 	
 	
 	@Column(name = "id_projekt")
@@ -81,9 +80,14 @@ public class Projekt {
 	}
 	
 	@Column(name = "kategoria_projektu")
-	public int getKategoriaProjektu() {
+	public KatProjektu getKategoriaProjektu() {
 		return kategoriaProjektu;
 	}
+	public void setKategoriaProjektu(KatProjektu kategoriaProjektu) {
+		this.kategoriaProjektu = kategoriaProjektu;
+	}
+	
+	
 	
 	
 

@@ -1,3 +1,4 @@
+
 package com.zio.models;
 
 import javax.persistence.Column;

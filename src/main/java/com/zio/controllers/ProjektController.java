@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zio.exceptions.ItemNotFoundException;
+import com.zio.models.KatProjektu;
 import com.zio.models.Pracownik;
 import com.zio.models.Projekt;
 import com.zio.models.Szkolenie;
+import com.zio.repositories.KatProjektuRepository;
 import com.zio.repositories.PracownikRepository;
 import com.zio.repositories.ProjektRepository;
 
@@ -31,7 +33,35 @@ public class ProjektController {
 	@Autowired
 	PracownikRepository pracownikRepository;
 	
+	@Autowired
+	KatProjektuRepository katProjektuRepository;
 	
+	@PutMapping(value = "/addKategoria/{projektId}/{kategoriaId}")
+	public Projekt addKategoriaToProjekt(@PathVariable int projektId, @PathVariable int kategoriaId) {
+		Projekt p = projektRepository.findById(projektId).orElseThrow(() -> new ItemNotFoundException());
+		KatProjektu kp = katProjektuRepository.findByIdKat(kategoriaId);
+		p.setKategoriaProjektu(kp);
+		projektRepository.save(p);
+		return p;
+	}
+	
+	@PutMapping(value = "/changeKategoria/{projektId}/{kategoriaId}")
+	public Projekt changeKategoriaToProjekt(@PathVariable int projektId, @PathVariable int kategoriaId) {
+		Projekt p = projektRepository.findById(projektId).orElseThrow(() -> new ItemNotFoundException());
+		KatProjektu kp = katProjektuRepository.findByIdKat(kategoriaId);
+		p.setKategoriaProjektu(kp);
+		projektRepository.save(p);
+		return p;
+	}
+	
+	@PutMapping(value = "/removeKategoria/{projektId}/")
+	public Projekt removeKategoriaToProjekt(@PathVariable int projektId) {
+		Projekt p = projektRepository.findById(projektId).orElseThrow(() -> new ItemNotFoundException());
+//		KatProjektu kp = katProjektuRepository.findByIdKat(kategoriaId);
+		p.setKategoriaProjektu(null);
+		projektRepository.save(p);
+		return p;
+	}
 	
 	@PutMapping(value="/addPracownik/{pracownik_id}/{projekt_id}")
 	public void editProjekt(@PathVariable int projekt_id, @PathVariable int pracownik_id) {
