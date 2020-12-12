@@ -3,6 +3,8 @@
 **Dokumentacja** : https://docs.google.com/document/d/1Ej96htsU3wJZiu_nJ5V7qXtIH7qG0024Oh0gC5AcgG4/edit?usp=sharing
 tu bede wypisywac rozne rzeczy zwiazane z projektem takie jak ustawic dockera czy jakies endpointy bo nie bede robic dokumentacji
 
+**aktualny link do testowania endpointow**
+https://www.getpostman.com/collections/c9c0ff259de11f86baef
 
 # Stworzenie instancji db
 **Pobierz** dockera

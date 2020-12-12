@@ -3,9 +3,9 @@
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Szkolenie_pracownik.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/ProjektController.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/StanowiskoController.java
-/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Kat_projektu.java
-/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Pracownik_hr.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/KatProjektu.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Stanowisko.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/repositories/PracownikHrRepository.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Projekt_pracownik.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/repositories/Szkolenie_katRepository.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/PracownikController.java
@@ -13,7 +13,9 @@
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/SzkolenieKat.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/KandydatController.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Pracownik.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/KatProjektuController.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/main/Main.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/PracownikHr.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Projekt.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/repositories/PracownikRepository.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Szkolenie.java
@@ -22,5 +24,7 @@
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/main/MyResourceConfig.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Kandydat.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/repositories/SzkolenieRepository.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/PracownikHrController.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/repositories/KatProjektuRepository.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/repositories/KandydatRepository.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/Szkolenie_katController.java
