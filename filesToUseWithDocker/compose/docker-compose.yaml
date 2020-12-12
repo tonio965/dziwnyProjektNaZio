@@ -7,7 +7,7 @@ services:
     networks:
       - my-net
     environment:
-      MYSQL_DATABASE: 'projdb'
+      MYSQL_DATABASE: 'newDb'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'  

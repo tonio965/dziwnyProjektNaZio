@@ -3,6 +3,10 @@
 **Dokumentacja** : https://docs.google.com/document/d/1Ej96htsU3wJZiu_nJ5V7qXtIH7qG0024Oh0gC5AcgG4/edit?usp=sharing
 tu bede wypisywac rozne rzeczy zwiazane z projektem takie jak ustawic dockera czy jakies endpointy bo nie bede robic dokumentacji
 
+**Instrukcja**
+https://docs.google.com/document/d/1ykkRRiCyoE8AGW8nI8wcV1fGyhdh33KAbctN8vnS8rI/edit?usp=sharing
+
+
 **aktualny link do testowania endpointow**
 https://www.getpostman.com/collections/c9c0ff259de11f86baef
 
