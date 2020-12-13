@@ -3,6 +3,7 @@ package com.zio.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,10 @@ public class PracownikHrController {
 		
 		Pracownik p = pracownikRepository.findById(pracownikId).get();
 		PracownikHr phr = pracownik;
+        String generatedSecuredPasswordHash = BCrypt.hashpw(pracownik.getHaslo(), BCrypt.gensalt(12));
+        phr.setHaslo(generatedSecuredPasswordHash);
+        System.out.println("pw hash: "+generatedSecuredPasswordHash);
+		phr.setRole("role: ADMIN");
 		phr.setPracownik(p);
 		repository.save(phr);
 		return phr;

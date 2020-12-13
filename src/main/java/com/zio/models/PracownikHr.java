@@ -59,7 +59,7 @@ public class PracownikHr {
 		this.pracownik = p;
 	}
 	
-	@Column(name = "login")
+	@Column(name = "login", unique=true)
 	public String getLogin() {
 		return login;
 	}
