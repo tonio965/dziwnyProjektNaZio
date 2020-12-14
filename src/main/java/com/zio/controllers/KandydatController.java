@@ -18,6 +18,7 @@ import com.zio.models.Kandydat;
 import com.zio.models.Pracownik;
 import com.zio.models.Stanowisko;
 import com.zio.repositories.KandydatRepository;
+import com.zio.repositories.PracownikRepository;
 import com.zio.repositories.StanowiskoRepository;
 
 @RestController
@@ -30,10 +31,32 @@ public class KandydatController {
 	@Autowired
 	StanowiskoRepository stanowiskoRepository;
 	
+	@Autowired
+	PracownikRepository pracownikRepository;
+	
 	@GetMapping
 	public Iterable<Kandydat> getKandydaci(){
 		return repository.findAll();
 	}
+	
+	@PostMapping(value ="/employKandydat/{idCandidate}")
+	public Pracownik employedKandydat(@PathVariable Integer idCandidate) {
+		
+		Kandydat k = repository.findById(idCandidate).get();
+		
+		Pracownik p = new Pracownik();
+		
+		p.setImie(k.getImie());
+		p.setNazwisko(k.getNazwisko());
+		p.setStanowisko(k.getStanowisko());
+		p.setTyp_konta(1);
+		p.setSzkolenia(null);
+		repository.delete(k);
+		pracownikRepository.save(p);
+		return p;
+	}
+	
+	
 	
 	@GetMapping(value = "/{id}")
 	public Kandydat getKandydat(@PathVariable Integer id) {
