@@ -157,6 +157,7 @@ public class PracownikController {
 		p.setNazwisko(pracownik.getNazwisko());
 		p.setStanowisko(pracownik.getStanowisko());
 		p.setTyp_konta(pracownik.getTyp_konta());
+		p.setSzkolenia(pracownik.getSzkolenia());
 		repository.save(p);
 	}
 	
