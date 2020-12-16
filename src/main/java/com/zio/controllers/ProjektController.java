@@ -89,8 +89,8 @@ public class ProjektController {
 		
 		
 		
-		Pracownik prac = pracownikRepository.findById(pracownik_id).get();
-		p.getPracownicy().add(prac);
+//		Pracownik prac = pracownikRepository.findById(pracownik_id).get();
+//		p.getPracownicy().add(prac);
 		projektRepository.save(p);
 
 	}
