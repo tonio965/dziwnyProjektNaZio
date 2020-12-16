@@ -36,8 +36,8 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter{
 			.authorizedGrantTypes("password", "authentication_code", "refresh_token").scopes("read","write")
 			.authorities("ROLE_CLIENT","ROLE_TRUSTED_CLIENT", "USER", "ADMIN")
 			.autoApprove(true)
-			.accessTokenValiditySeconds(180)
-			.refreshTokenValiditySeconds(600);
+			.accessTokenValiditySeconds(600)
+			.refreshTokenValiditySeconds(1200);
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package com.zio.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -106,7 +107,12 @@ public class ProjektController {
 	
 	@PostMapping
 	public Projekt addProjekt(@RequestBody Projekt projekt) {
-		return projektRepository.save(projekt);
+		List<Pracownik> proj = projekt.getPracownicy();
+		projekt.setPracownicy(new ArrayList<>());
+		projektRepository.save(projekt);
+		for(Pracownik p : proj)
+			editProjekt(projekt.getIdProjekt(), p.getId());
+		return projekt;
 	}
 	
 
