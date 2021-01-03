@@ -20,6 +20,7 @@ public class Kandydat {
 	String imie;
 	String nazwisko;
 	String nazwa_pliku_CV;
+	String email;
 	
 	@OneToOne
 	private Stanowisko stanowisko;
@@ -31,6 +32,16 @@ public class Kandydat {
 		this.imie = imie;
 		this.nazwisko = nazwisko;
 		this.nazwa_pliku_CV = nazwa_pliku_CV;
+		this.email =new String();
+	}
+	
+	public Kandydat(int id, String imie, String nazwisko, String nazwa_pliku_CV, String email) {
+		super();
+		this.id = id;
+		this.imie = imie;
+		this.nazwisko = nazwisko;
+		this.nazwa_pliku_CV = nazwa_pliku_CV;
+		this.email = email;
 	}
 	public Kandydat() {
 	}
@@ -41,6 +52,14 @@ public class Kandydat {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	@Column(name = "email")
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	@Column(name = "imie")

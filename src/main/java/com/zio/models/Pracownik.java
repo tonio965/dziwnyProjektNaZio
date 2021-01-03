@@ -15,6 +15,7 @@ public class Pracownik {
 	String imie;
 	String nazwisko;
 	int typ_konta;
+	String email;
 	
 	@OneToOne
 	private Stanowisko stanowisko;
@@ -73,7 +74,19 @@ public class Pracownik {
 		this.typ_konta = typ_konta;
 		this.stanowisko = stanowisko;
 		this.szkolenia = new ArrayList<>();
-		}
+		this.email = "";
+	}
+	
+	public Pracownik(int id, String imie, String nazwisko, int typ_konta, Stanowisko stanowisko, String email) {
+		super();
+		this.id = id;
+		this.imie = imie;
+		this.nazwisko = nazwisko;
+		this.typ_konta = typ_konta;
+		this.stanowisko = stanowisko;
+		this.szkolenia = new ArrayList<>();
+		this.email = email;
+	}
 	
 	@Column(name = "id")
 	public int getId() {
@@ -81,6 +94,14 @@ public class Pracownik {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	@Column(name = "email")
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	@Column(name = "imie")

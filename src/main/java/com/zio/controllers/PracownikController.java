@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +26,7 @@ import com.zio.models.Szkolenie;
 import com.zio.repositories.PracownikRepository;
 import com.zio.repositories.StanowiskoRepository;
 import com.zio.repositories.SzkolenieRepository;
+import com.zio.services.MailService;
 
 
 @RestController
@@ -39,12 +42,35 @@ public class PracownikController {
 	@Autowired
 	StanowiskoRepository stanowiskoRepository;
 	
+	@Autowired
+	MailService mailService;
+	
 	
 
 	@GetMapping
 	public Iterable<Pracownik> getPracowniks() {
 	    return repository.findAll();
 	}
+	
+    @GetMapping("/sendMail")
+    public String sendMail() throws MessagingException {
+//    	
+//    	for(int i=0; i<10000; i++ ) {
+//            try {
+//            	Thread.sleep(1000);
+//        		mailService.sendMail("atagisow@protonmail.com",
+//                        "bajo jajo bajo jajo",
+//                        "bajo jajo bajo jajo", true);
+//        		System.out.println("bajo jajo");
+//            }
+//            catch(Exception e) {
+//            	
+//            }
+//
+//            
+//    	}
+        return "sent";
+    }
 	
 	@GetMapping(value = "/{id}")
 	public Pracownik getPracownik(@PathVariable Integer id) {

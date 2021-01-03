@@ -2,6 +2,8 @@ package com.zio.controllers;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +22,7 @@ import com.zio.models.Stanowisko;
 import com.zio.repositories.KandydatRepository;
 import com.zio.repositories.PracownikRepository;
 import com.zio.repositories.StanowiskoRepository;
+import com.zio.services.MailService;
 
 @RestController
 @RequestMapping(value = "/kandydaci")
@@ -33,6 +36,9 @@ public class KandydatController {
 	
 	@Autowired
 	PracownikRepository pracownikRepository;
+	
+	@Autowired
+	MailService mailService;
 	
 	@GetMapping
 	public Iterable<Kandydat> getKandydaci(){
@@ -52,6 +58,17 @@ public class KandydatController {
 		p.setTyp_konta(1);
 		p.setSzkolenia(null);
 		repository.delete(k);
+		if(k.getEmail().length()>1) {
+			p.setEmail(k.getEmail());
+    		try {
+				mailService.sendMail(k.getEmail(),
+			        "bajo jajo bajo jajo",
+			        "bajo jajo bajo jajo", true);
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
+    		System.out.println("candidate employed, informed via email");
+		}
 		pracownikRepository.save(p);
 		return p;
 	}
