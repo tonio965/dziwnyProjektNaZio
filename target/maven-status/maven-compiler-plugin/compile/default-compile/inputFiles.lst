@@ -17,8 +17,11 @@
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/main/UserDetailsServiceImpl.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Pracownik.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/KatProjektuController.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/tests/Tests1.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/main/Main.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/PracownikHr.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/aspects/GetAspect.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/services/MailService.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Projekt.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/main/OAuthConfiguration.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/main/SecurityConfig.java
@@ -26,6 +29,7 @@
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Szkolenie.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/exceptions/ItemNotFoundException.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/SzkolenieController.java
+/Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/services/MyAspect.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/models/Kandydat.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/repositories/SzkolenieRepository.java
 /Users/tomaszkoltun/eclipse-workspace/zio/dziwnyProjektNaZio/src/main/java/com/zio/controllers/PracownikHrController.java

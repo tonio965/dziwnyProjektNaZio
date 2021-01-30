@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.mail.MessagingException;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,10 +29,14 @@ import com.zio.repositories.StanowiskoRepository;
 import com.zio.repositories.SzkolenieRepository;
 import com.zio.services.MailService;
 
+import ch.qos.logback.classic.Logger;
+
 
 @RestController
 @RequestMapping(value = "/pracownicy")
 public class PracownikController {
+	
+	Logger logger = (Logger) LoggerFactory.getLogger(PracownikController.class);
 	
 	@Autowired
 	PracownikRepository repository;
@@ -49,6 +54,7 @@ public class PracownikController {
 
 	@GetMapping
 	public Iterable<Pracownik> getPracowniks() {
+		logger.info("pracownikController: getAll");
 	    return repository.findAll();
 	}
 	
@@ -74,6 +80,7 @@ public class PracownikController {
 	
 	@GetMapping(value = "/{id}")
 	public Pracownik getPracownik(@PathVariable Integer id) {
+		logger.info("pracownikController: getById");
 	    return repository.findById(id).orElseThrow(ItemNotFoundException::new);
 	}
 	
@@ -82,12 +89,14 @@ public class PracownikController {
 		Pracownik p = repository.findById(pracownik_id).orElseThrow(() -> new ItemNotFoundException());
 		Szkolenie s = szkolenieRepository.findById(szkolenie_id).get();
 		p.getSzkolenia().add(s);
+		logger.info("pracownikController: addSzkoenie");
 		repository.save(p);
 		
 	}
 	
 	@PutMapping
 	public void editAnything(@RequestBody Pracownik pracownik) {
+		logger.info("pracownikController: editPracownik");
 		Pracownik p = repository.findById(pracownik.getId()).orElseThrow(() -> new ItemNotFoundException());
 		if(pracownik.getImie()!=null)
 			p.setImie(pracownik.getImie());
@@ -105,6 +114,7 @@ public class PracownikController {
 	@Transactional
 	@PutMapping(value= "/addStanowisko/{id}/{pracownikId}")
 	public void addStanowiskoToPracownik(@PathVariable Integer id,@PathVariable Integer pracownikId) {
+		logger.info("pracownikController: addStanowisko");
 		Stanowisko s = stanowiskoRepository.findById(id).get();
 		Pracownik k = repository.findById(pracownikId).get();
 		k.setStanowisko(s);
@@ -113,6 +123,7 @@ public class PracownikController {
 	
 	@PutMapping(value="/removeSzkolenie/{pracownik_id}/{szkolenie_id}")
 	public void removeSzkolenie(@PathVariable int pracownik_id, @PathVariable int szkolenie_id) {
+		logger.info("pracownikController: removeszkolenie");
 		Pracownik p = repository.findById(pracownik_id).orElseThrow(() -> new ItemNotFoundException());
 		int index=-1;
 		List<Szkolenie> szkolenia = p.getSzkolenia();
@@ -132,6 +143,7 @@ public class PracownikController {
 	@PutMapping(value= "/changeStanowisko/{id}/{pracownikId}")
 	public void changeStanowiskoToPracownik(@PathVariable Integer id,@PathVariable Integer pracownikId) {
 		Stanowisko s = stanowiskoRepository.findById(id).get();
+		logger.info("pracownikController: changestanowisko");
 		Pracownik k = repository.findById(pracownikId).get();
 		k.setStanowisko(s);
 		repository.save(k);
@@ -140,6 +152,7 @@ public class PracownikController {
 	@Transactional
 	@PutMapping(value= "/removeStanowisko/{pracownikId}")
 	public void removeStanowiskoToPracownik(@PathVariable Integer pracownikId) {
+		logger.info("pracownikController: removestanowisko");
 //		Stanowisko s = stanowiskoRepository.findById(id).get();
 		Pracownik k = repository.findById(pracownikId).get();
 		k.setStanowisko(null);
@@ -149,6 +162,7 @@ public class PracownikController {
 	@GetMapping(value="/getBySzkolenie/{szkolenie}")
 	List<Pracownik> findBySzkolenia(@PathVariable int szkolenie){
 		List<Pracownik> pracownics = new ArrayList<>();
+		logger.info("pracownikController: getBySzkolenie");
 		List<Pracownik> all = repository.findAll();
 		
 		for(Pracownik p : all) {
@@ -166,11 +180,13 @@ public class PracownikController {
 	public Pracownik addPracownik(@RequestBody Pracownik pracownik) {
 //		Szkolenie s = szkolenieRepository.findById(1).get();
 //		pracownik.getSzkolenia().add(s);
+		logger.info("pracownikController: add");
 	    return repository.save(pracownik);
 	}
 	
 	@DeleteMapping(value = "/{id}")
 	public void deletePracownik(@PathVariable Integer id) {
+		logger.info("pracownikController: delete");
 	    repository.deleteById(id);
 	}
 	

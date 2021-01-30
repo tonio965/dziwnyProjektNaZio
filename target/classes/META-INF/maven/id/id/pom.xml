@@ -38,6 +38,14 @@
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-mail</artifactId>
 	</dependency>
+	
+	<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+    
+    
+    
 <!--     <dependency>
         <groupId>org.springframework.security.oauth.boot</groupId>
         <artifactId>spring-security-oauth2-autoconfigure</artifactId>
@@ -145,7 +153,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
     </dependency>
     
     <dependency>
@@ -177,6 +184,18 @@
 	                <target>14</target>
 	            </configuration>
 	        </plugin>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-javadoc-plugin</artifactId>
+	            <executions>
+	                <execution>
+	                    <id>attach-javadocs</id>
+	                    <goals>
+	                        <goal>jar</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+       		</plugin>
 	        <plugin>
 	          <groupId>org.springframework.boot</groupId>
 	          <artifactId>spring-boot-maven-plugin</artifactId>
