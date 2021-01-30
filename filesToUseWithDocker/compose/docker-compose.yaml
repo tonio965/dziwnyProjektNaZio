@@ -14,6 +14,24 @@ services:
     ports:
       - '3308:3306'
 
+  frontend:
+    container_name: miab_frontend
+    build:
+      context: ../zio
+    networks:
+      - my-net
+    ports:
+      - '8080:8080'
+
+  backend:
+    container_name: miab_backend
+    build:
+      context: ../..
+    networks:
+      - my-net
+    ports:
+      - '8082:8082'
+
 networks:
     my-net:
         external: true
